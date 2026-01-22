@@ -1,7 +1,7 @@
 # Pomodoro Timer :tomato: :clock2:
 ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/HectorCRM/Pomodoro_Timer/total?label=Descargas)
 ![GitHub Repo stars](https://img.shields.io/github/stars/HectorCRM/Pomodoro_Timer?style=round)
-![Visitas](https://komarev.com/ghpvc/?username=HectorCRM-Pomodoro_Timer&color=blue&style=round&label=Visitas:)  
+![Visitas](https://komarev.com/ghpvc/?username=HectorCRM-PomodoroTimer&color=blue&style=round&label=Visitas:)  
 
 ![Inicio](./imgs/Snapshot_2026-01-22_02-28-10.png)
 
