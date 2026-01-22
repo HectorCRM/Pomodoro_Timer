@@ -27,11 +27,11 @@ Una vez ejecutado aparecerá el menú principal con las siguientes opciones:
  - **3. Crear nuevo Pomodoro**: Mediante esta opción podemos crear nuevos Pomodoros personalizados.  
  - **4. Ver Pomodoro seleccionado**: Esta opción nos mostrará del Pomodoro seleccionado su nombre, la duración, la duración del descanso, la fecha de creación y el numero de veces que ha sido utilizado.  
  - **5. Configuracion**
-  - **1. Crear configuración**: Permite crear combinaciones de color diferentes para el script, modificando el color de la cabecera y de los menus de forma independente. Muestra los colores disponibles.  
-  - **2. Seleccionar configuración**: Permite seleccionar las diferentes configuraciones creadas. Una vez seleccionada, en la cabecera del script dejara de mostrar **configuracion por defecto** y mostrará el nombre de la que se ha seleccionado.  
+   - **1. Crear configuración**: Permite crear combinaciones de color diferentes para el script, modificando el color de la cabecera y de los menus de forma independente. Muestra los colores disponibles.  
+   - **2. Seleccionar configuración**: Permite seleccionar las diferentes configuraciones creadas. Una vez seleccionada, en la cabecera del script dejara de mostrar **configuracion por defecto** y mostrará el nombre de la que se ha seleccionado.  
   ![Configuracion cambiada](./imgs/Snapshot_2026-01-22_02-29-59.png)
-  - **3. Eliminar configuración**: Permite eliminar configuraciones desde el propio script.  
-  - **0. Salir**
+   - **3. Eliminar configuración**: Permite eliminar configuraciones desde el propio script.  
+   - **0. Salir**
  - **0. Salir**
 ![Script en uso](./imgs/Snapshot_2026-01-22_02-30-26.png)  
 
