@@ -1,6 +1,9 @@
 #!/bin/bash
 
-version="1.0"
+version="1.1"
+path_script=$(pwd)
+path_pomodoros="$path_script/pomodoros"
+path_configuraciones="$path_script/configuraciones"
 #COLORES TERMINAL
 morado="\e[35m"
 rojo="\e[31m"
@@ -22,9 +25,19 @@ contador(){
 	while [ $total_segundos -gt 0 ]; do
 		local minutos=$((total_segundos / 60))
 		local segundos=$((total_segundos % 60))
-		#echo "$(printf "%02d:%02d" $minutos \( segundos)) "
 		printf "\r\e[KQuedan: %02d minutos %02d segundos" "$minutos" "$segundos"
-		sleep 1
+		read -n 1 -t 1 pausa
+		if [[ $pausa == [pP] ]]; then
+			fin_pausa=false
+			while [[ $fin_pausa == false ]]; do
+				printf "\r\e[K\e[5;37mPausa \e[0m"
+				read -n 1 continuar
+				if [[ $continuar == [pP] ]]; then
+					fin_pausa=true
+				fi
+			done
+		fi
+		#sleep 1
 		((total_segundos--))
 	done
 	tput cnorm #restaura el cursor
@@ -110,12 +123,14 @@ echo -e "$reset_color"
 				echo -e "Tiempo de estudio:$rojo $duracion_pomodoro $reset_color"
 				echo -e "Tiempo de descanso:$rojo $descanso_pomodoro $reset_color"
 				read -rp "¿Qieres utilizarlo?[s/n]: " respuesta
+				((veces_utilizado++))
 				if [[ $respuesta == [sS] ]]; then
 					((veces_utilizado++))
 					echo "De acuerdo."
 					read -rp "¿Cuantas veces quieres utilizarlo?: " resp_veces
 					tiempo_total=$(( duracion_pomodoro * resp_veces ))
 					echo -e "Tiempo total de estudio:$rojo $tiempo_total minutos $reset_color"
+					echo -e "Recuerda que puedes pulsar 'p' en cualquier momento para pausar el temporizador$reset_color"
 					sleep 2
 					for (( i=1; i<=resp_veces; i++ )); do
 						echo -e "$morado¡Estudia!$reset_color"
@@ -134,22 +149,23 @@ echo -e "$reset_color"
 				fi
 			fi	
 		;;
-		2)
-			echo -e "$azul"
-			echo $(ls *.conf)
+		2) #SELECION DE POMODOROS
+			echo -e "$gris"
+			cd $path_pomodoros
+			basename -s .conf *.conf
 		    	echo -e "$reset_color"
 			read -rp "Selecciona un Pomodoro de la lista: " pomodoro
 			source "$pomodoro.conf"
-			((veces_utilizado++))
+			cd $path_script
 			clear
 		;;
-		3)
+		3) #CREACION DE POMODOROS
 			
 			read -rp "Elige un nombre para el Pomodoro: " nombre
 			read -rp "Elige una duración de estudio en minutos: " duracion
 			read -rp "Elige una duracion de descanso en minutos: " descanso
 			timestamp=$(date +"%A %d/%m/%Y a las %H:%M:%S")
-			cat <<EOF >> $nombre.conf
+			cat <<EOF >> $path_pomodoros/$nombre.conf
 #[options]
 nombre_pomodoro=$nombre
 duracion_pomodoro=$duracion
@@ -194,7 +210,7 @@ EOF
 					read -rp "Dale un nombre a esta configuración: " nombre_conf
 					echo -e "$reset_color"
 					timestamp=$(date +"%A %d/%m/%Y a las %H:%M:%S")
-					cat <<EOF >> $nombre_conf.color
+					cat <<EOF >> $path_configuraciones/$nombre_conf.color
 #[options]
 nombre_config=$nombre_conf
 color_header=$color_cabecera
@@ -204,11 +220,13 @@ modificado="$timestamp"
 EOF
 				;;
 				2)
-					echo -e "$azul"
-					echo $(ls *.color)
+					echo -e "$gris"
+					cd $path_configuraciones
+					basename -s .color *.color
 					echo -e "$reset_color"
 					read -rp "Selecciona una configuración de la lista: " select_configuracion
 					source "$select_configuracion.color"
+					cd $path_script
 				;;
 				3)
 					echo -e "$rojo"

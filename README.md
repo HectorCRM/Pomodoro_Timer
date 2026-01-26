@@ -22,7 +22,7 @@ Ejecútalo:
 ./pomodoro-timer.sh
 ```
 Una vez ejecutado aparecerá el menú principal con las siguientes opciones:  
- - **1. Iniciar Pomodoro**(Previamente hay que selecionar el que queremos utilizar).  
+ - **1. Iniciar Pomodoro**(Previamente hay que selecionar el que queremos utilizar). El temporizador puede ser pausado/reanudado pulsando la letra 'p' en el teclado.  
  - **2. Seleccionar Pomodoro**: Esta opción permite elegir entre los pomodoros que hayamos creado. una vez elegido se mostrara en la cabecera del script el Pomodoro seleccionado.  
  - **3. Crear nuevo Pomodoro**: Mediante esta opción podemos crear nuevos Pomodoros personalizados.  
  - **4. Ver Pomodoro seleccionado**: Esta opción nos mostrará del Pomodoro seleccionado su nombre, la duración, la duración del descanso, la fecha de creación y el numero de veces que ha sido utilizado.  
@@ -38,8 +38,10 @@ Una vez ejecutado aparecerá el menú principal con las siguientes opciones:
 
 ## Requisitos :clipboard:
  - Git
+ - Linux
 
 ## Mejoras futuras :rocket:
+ - Habilitar pausa para el temporizador :heavy_check_mark:  
  - Implementar el uso de banderas.  
 
 ## Versiones :pushpin:
